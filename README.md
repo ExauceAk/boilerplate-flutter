@@ -1,16 +1,18 @@
-# overpower
+### ✅ `mobile-app/README.md` (Flutter)
 
-A new Flutter project.
+# 📱 Mobile App – Flutter
 
-## Getting Started
+App mobile Flutter connectée au backend avec auth et CRUD.
 
-This project is a starting point for a Flutter application.
+## 🔧 Prérequis
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter v3.13+
+- Backend actif
+- Android/iOS emulator
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Lancer l’app
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+cd mobile-app
+flutter pub get
+flutter run
