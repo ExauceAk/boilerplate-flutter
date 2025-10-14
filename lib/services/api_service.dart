@@ -7,7 +7,7 @@ class ApiService {
 
   ApiService() {
     // Todo: use var
-    dio.options.baseUrl = 'http://10.10.16.41:4001/api/v1/';
+    dio.options.baseUrl = 'http://10.35.132.88:4001/api/v1/';
   }
 
   Future<Map<String, String>> _getHeaders() async {
