@@ -13,6 +13,7 @@ class LoginScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
@@ -30,22 +31,24 @@ class LoginScreen extends StatelessWidget {
           return SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  height: size.height * 0.6,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Color(0xFF8A2BE2), Color(0xFF6A0DAD)],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                ClipPath(
+                  clipper: CloudClipper(),
+                  child: Container(
+                    height: size.height * 0.6,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Color(0xFF8A2BE2), Color(0xFF6A0DAD)],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                    ),
+                    child: Image.asset(
+                      'assets/images/auth_background.png',
+                      fit: BoxFit.fill,
                     ),
                   ),
-                  child: Image.asset(
-                    'assets/images/auth_background.png',
-                    fit: BoxFit.fill,
-                  ),
                 ),
-
                 Container(
                   width: double.infinity,
                   padding:
@@ -95,7 +98,6 @@ class LoginScreen extends StatelessWidget {
                               child: const Text("Forgot Password?"))
                         ],
                       ),
-
                       SizedBox(
                         height: 50,
                         child: ElevatedButton(
@@ -161,4 +163,24 @@ void myAuthListener(BuildContext context, AuthState state) {
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(state.message)));
   }
+}
+
+class CloudClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+
+    path.lineTo(0, size.height - 40);
+    path.quadraticBezierTo(
+        size.width * 0.25, size.height, size.width * 0.5, size.height - 40);
+    path.quadraticBezierTo(
+        size.width * 0.75, size.height - 80, size.width, size.height - 40);
+    path.lineTo(size.width, 0);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
