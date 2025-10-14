@@ -110,4 +110,9 @@ class AuthRepository {
     }
   }
 
+  Future<void> logout() async {
+    await secureStorage.delete(key: 'authToken'); // Supprimer le jeton
+    print('User logged out');
+  }
+
 }

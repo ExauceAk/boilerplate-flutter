@@ -37,6 +37,7 @@ dependencies:
   dio: ^5.9.0
   flutter_secure_storage: ^9.2.4
   flutter_launcher_icons: ^0.14.4
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_test:
@@ -91,3 +92,12 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+# Icon configuration
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/app_icon.png"
+  adaptive_icon_background: "#ffffff"
+  # adaptive_icon_foreground: "assets/icon/app_icon_foreground.png"
+
