@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notable/screens/register_screen.dart';
 import '../blocs/auth/auth_cubit.dart';
 import '../blocs/auth/auth_state.dart';
+import '../widgets/text_field_widget.dart';
 import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -33,16 +35,9 @@ class LoginScreen extends StatelessWidget {
               children: [
                 ClipPath(
                   clipper: CloudClipper(),
-                  child: Container(
+                  child: SizedBox(
                     height: size.height * 0.5,
                     width: double.infinity,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Color(0xFF8A2BE2), Color(0xFF6A0DAD)],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                    ),
                     child: Image.asset(
                       'assets/images/auth_background.png',
                       fit: BoxFit.cover,
@@ -56,9 +51,6 @@ class LoginScreen extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 5),
                   decoration: const BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(30),
-                    ),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -81,9 +73,9 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      _buildTextField(emailController, "Email"),
+                      buildTextField(emailController, "Email"),
                       const SizedBox(height: 10),
-                      _buildTextField(passwordController, "Password",
+                      buildTextField(passwordController, "Password",
                           isPassword: true),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           onPressed: () {},
                           child: const Text(
-                            "Sign In",
+                            "Login",
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           ),
                         ),
@@ -119,9 +111,15 @@ class LoginScreen extends StatelessWidget {
                         children: [
                           const Text("Don't have an account?"),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => RegisterScreen()),
+                                );
+                              },
                               child: const Text(
-                                "Sign Up",
+                                "Register",
                                 style: TextStyle(color: Colors.deepPurple),
                               ))
                         ],
@@ -136,22 +134,6 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget _buildTextField(TextEditingController fieldController, String label,
-    {bool isPassword = false}) {
-  return TextField(
-    obscureText: isPassword,
-    controller: fieldController,
-    style: const TextStyle(color: Colors.white),
-    decoration: InputDecoration(
-      labelText: label,
-      labelStyle: const TextStyle(color: Colors.grey),
-      filled: true,
-      fillColor: Colors.white,
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-    ),
-  );
 }
 
 void myAuthListener(BuildContext context, AuthState state) {
@@ -172,12 +154,12 @@ class CloudClipper extends CustomClipper<Path> {
     Path path = Path();
 
     path.lineTo(0, size.height);
-    path.quadraticBezierTo(
-        size.width * 0.2, size.height - 120, size.width * 0.4, size.height - 30);
+    path.quadraticBezierTo(size.width * 0.2, size.height - 120,
+        size.width * 0.4, size.height - 30);
     path.quadraticBezierTo(
         size.width * 0.5, size.height - 45, size.width * 0.6, size.height - 15);
-    path.quadraticBezierTo(
-        size.width * 0.65, size.height - 20, size.width * 0.7, size.height - 15);
+    path.quadraticBezierTo(size.width * 0.65, size.height - 20,
+        size.width * 0.7, size.height - 15);
     path.quadraticBezierTo(
         size.width * 0.9, size.height - 60, size.width, size.height - 15);
     path.lineTo(size.width, 0);
