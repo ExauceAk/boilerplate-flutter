@@ -170,11 +170,15 @@ class CloudClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
 
-    path.lineTo(0, size.height - 40);
+    path.lineTo(0, size.height);
     path.quadraticBezierTo(
-        size.width * 0.25, size.height, size.width * 0.5, size.height - 40);
+        size.width * 0.2, size.height - 120, size.width * 0.4, size.height - 30);
     path.quadraticBezierTo(
-        size.width * 0.75, size.height - 80, size.width, size.height - 40);
+        size.width * 0.5, size.height - 45, size.width * 0.6, size.height - 15);
+    path.quadraticBezierTo(
+        size.width * 0.65, size.height - 20, size.width * 0.7, size.height - 15);
+    path.quadraticBezierTo(
+        size.width * 0.9, size.height - 60, size.width, size.height - 15);
     path.lineTo(size.width, 0);
     path.close();
 
