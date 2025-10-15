@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                 ClipPath(
                   clipper: CloudClipper(),
                   child: Container(
-                    height: size.height * 0.6,
+                    height: size.height * 0.5,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -45,7 +45,8 @@ class LoginScreen extends StatelessWidget {
                     ),
                     child: Image.asset(
                       'assets/images/auth_background.png',
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
                     ),
                   ),
                 ),
